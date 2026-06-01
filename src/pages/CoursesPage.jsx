@@ -57,10 +57,19 @@ export default function CoursesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {courses.map((course, i) => (
               <div key={course.id} className="card overflow-hidden group">
-                <div className={`bg-gradient-to-br ${gradients[i % gradients.length]} p-6 text-white`}>
-                  <div className="text-4xl mb-3">{course.icon}</div>
-                  <h2 className="font-display text-xl font-bold">{course.title}</h2>
-                  <p className="text-white/80 text-sm mt-1">{course.subtitle}</p>
+                <div className="relative h-44">
+                  <img
+                    src={course.imageUrl}
+                    alt={course.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${gradients[i % gradients.length]} opacity-70`} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-royal-950/70 via-royal-950/10 to-transparent" />
+                  <div className="absolute inset-0 p-6 text-white flex flex-col justify-end">
+                    <h2 className="font-display text-xl font-bold">{course.title}</h2>
+                    <p className="text-white/85 text-sm mt-1">{course.subtitle}</p>
+                  </div>
                 </div>
                 <div className="p-6">
                   <p className="text-gray-600 text-sm mb-4 leading-relaxed">{course.description}</p>
@@ -99,7 +108,7 @@ export default function CoursesPage() {
       {/* CTA */}
       <section className="py-16 bg-white text-center">
         <div className="max-w-2xl mx-auto px-4">
-          <h2 className="section-title mb-4">Ready to Enrol?</h2>
+          <h2 className="section-title mb-4">Ready to Enroll?</h2>
           <p className="text-gray-500 mb-6">Fill out our enquiry form and our team will get back to you within 24 hours.</p>
           <Link to="/enquiry" className="btn-primary">Submit Enquiry</Link>
         </div>

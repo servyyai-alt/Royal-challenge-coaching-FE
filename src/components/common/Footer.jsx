@@ -97,8 +97,20 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
-          <p className="text-gray-500 text-sm">© 2024 Royal Coaching Centre. All rights reserved. Developed by Least Action Company</p>
-          <Link to="/admin/login" className="text-gray-600 hover:text-gray-400 text-xs transition-colors">Admin Portal</Link>
+          <div className="flex flex-col items-center sm:items-start gap-2">
+            <p className="text-gray-500 text-sm text-center sm:text-left">
+              © 2024 Royal Coaching Centre. All rights reserved. Developed by Least Action Company
+            </p>
+            <div className="flex flex-wrap justify-center sm:justify-start gap-x-4 gap-y-2 text-xs">
+              <Link to="/privacy-policy" className="text-gray-400 hover:text-gold-400 transition-colors">Privacy Policy</Link>
+              <Link to="/terms" className="text-gray-400 hover:text-gold-400 transition-colors">Terms & Conditions</Link>
+              <Link to="/refund-policy" className="text-gray-400 hover:text-gold-400 transition-colors">Refund Policy</Link>
+              <Link to="/disclaimer" className="text-gray-400 hover:text-gold-400 transition-colors">Disclaimer</Link>
+            </div>
+          </div>
+          <Link to="/admin/login" className="hover:bg-orange-500 text-xs transition-colors px-2 bg-orange-400 text-white rounded-full font-bold py-2">
+            Admin Portal
+          </Link>
         </div>
       </div>
     </footer>

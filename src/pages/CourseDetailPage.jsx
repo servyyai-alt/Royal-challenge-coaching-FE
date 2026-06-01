@@ -36,7 +36,9 @@ export default function CourseDetailPage() {
             <ArrowLeft size={16} /> Back to Courses
           </Link>
           <div className="flex items-start gap-6">
-            <div className="text-5xl">{course.icon}</div>
+            <div className="w-16 h-16 rounded-2xl overflow-hidden shadow-lg ring-1 ring-white/20 flex-shrink-0">
+              <img src={course.imageUrl} alt={course.title} className="w-full h-full object-cover" />
+            </div>
             <div>
               <h1 className="font-display text-3xl md:text-4xl font-bold mb-2">{course.title}</h1>
               <p className="text-gold-300 font-semibold">{course.subtitle}</p>

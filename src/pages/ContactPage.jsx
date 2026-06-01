@@ -129,7 +129,7 @@ export default function ContactPage() {
               </div>
 
               <div className="card p-6 gradient-royal text-white">
-                <h3 className="font-display text-xl font-bold mb-2">Ready to Enrol?</h3>
+                <h3 className="font-display text-xl font-bold mb-2">Ready to Enroll?</h3>
                 <p className="text-royal-200 text-sm mb-5">Submit an enquiry and our team will call you back within 24 hours.</p>
                 <Link to="/enquiry" className="bg-gold-500 hover:bg-gold-600 text-white px-6 py-3 rounded-full font-semibold text-sm inline-block transition-colors">
                   Submit Enquiry

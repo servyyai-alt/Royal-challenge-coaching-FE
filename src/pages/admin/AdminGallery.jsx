@@ -4,15 +4,16 @@ import AdminLayout from '../../components/admin/AdminLayout';
 import api from '../../utils/api';
 import toast from 'react-hot-toast';
 
-const CATEGORIES = ['Events', 'Competitions', 'Achievements', 'Classroom', 'Activities'];
+const CATEGORIES = ['Courses', 'Programs', 'Achievements', 'Competitions', 'Classrooms', 'Activities', 'Faculty'];
 
-const EMPTY = { title: '', description: '', imageUrl: '', category: 'Events', featured: false };
+const EMPTY = { title: '', description: '', imageUrl: '', category: 'Courses', featured: false };
 
 export default function AdminGallery() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState(EMPTY);
+  const [file, setFile] = useState(null);
   const [editId, setEditId] = useState(null);
   const [saving, setSaving] = useState(false);
 
@@ -28,17 +29,27 @@ export default function AdminGallery() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.title || !form.imageUrl) { toast.error('Title and image URL required.'); return; }
+    if (!form.title) { toast.error('Title is required.'); return; }
     setSaving(true);
     try {
+      let imageUrl = form.imageUrl;
+      if (file) {
+        const body = new FormData();
+        body.append('image', file);
+        const uploadRes = await api.post('/gallery/upload', body, { headers: { 'Content-Type': 'multipart/form-data' } });
+        imageUrl = uploadRes.data.data.url;
+      }
+      if (!imageUrl) { toast.error('Please upload an image or provide an image URL.'); return; }
+
       if (editId) {
-        await api.put(`/gallery/${editId}`, form);
+        await api.put(`/gallery/${editId}`, { ...form, imageUrl });
         toast.success('Updated.');
       } else {
-        await api.post('/gallery', form);
+        await api.post('/gallery', { ...form, imageUrl });
         toast.success('Added to gallery.');
       }
       setForm(EMPTY);
+      setFile(null);
       setEditId(null);
       setShowForm(false);
       fetchItems();
@@ -48,6 +59,7 @@ export default function AdminGallery() {
 
   const handleEdit = (item) => {
     setForm({ title: item.title, description: item.description || '', imageUrl: item.imageUrl, category: item.category, featured: item.featured });
+    setFile(null);
     setEditId(item._id);
     setShowForm(true);
   };
@@ -99,14 +111,30 @@ export default function AdminGallery() {
               </div>
 
               <div>
-                <label className="label">Image URL *</label>
-                <input value={form.imageUrl} onChange={e => setForm(p => ({ ...p, imageUrl: e.target.value }))}
-                  placeholder="https://example.com/image.jpg" className="input" required />
+                <label className="label">Upload Image</label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="input"
+                  onChange={(e) => setFile(e.target.files?.[0] || null)}
+                />
+                <p className="text-xs text-gray-500 mt-1">Or paste an image URL below.</p>
               </div>
 
-              {form.imageUrl && (
+              <div>
+                <label className="label">Image URL</label>
+                <input value={form.imageUrl} onChange={e => setForm(p => ({ ...p, imageUrl: e.target.value }))}
+                  placeholder="https://example.com/image.jpg" className="input" />
+              </div>
+
+              {(file || form.imageUrl) && (
                 <div className="rounded-xl overflow-hidden h-40 bg-gray-100">
-                  <img src={form.imageUrl} alt="Preview" className="w-full h-full object-cover" onError={e => e.target.style.display='none'} />
+                  <img
+                    src={file ? URL.createObjectURL(file) : form.imageUrl}
+                    alt="Preview"
+                    className="w-full h-full object-cover"
+                    onError={e => e.target.style.display='none'}
+                  />
                 </div>
               )}
 

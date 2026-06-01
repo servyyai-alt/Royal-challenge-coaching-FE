@@ -29,7 +29,7 @@ export default function Navbar() {
       {/* Top bar */}
       <div className="bg-royal-900 text-white text-xs py-1.5">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <span className="opacity-80">🎓 Admissions Open 2024-25 | 6th to 12th Std</span>
+          <span className="opacity-80">🎓 Admissions Open 2026-27 | 6th to 12th Std</span>
           <a href="tel:9486091662" className="flex items-center gap-1 font-semibold hover:text-gold-400 transition-colors">
             <Phone size={12} />
             94860 91662
@@ -43,7 +43,7 @@ export default function Navbar() {
           <div className="w-10 h-10 rounded-xl gradient-royal flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
             <span className="text-white font-display font-bold text-sm">RCC</span>
           </div>
-          <div className="hidden sm:block">
+          <div className="">
             <p className="font-display font-bold text-royal-900 text-sm leading-tight">Royal Coaching Centre</p>
             <p className="text-[10px] text-gray-500 font-body">Learn • Grow • Succeed</p>
           </div>

@@ -9,6 +9,10 @@ import CourseDetailPage from './pages/CourseDetailPage';
 import GalleryPage from './pages/GalleryPage';
 import ContactPage from './pages/ContactPage';
 import EnquiryPage from './pages/EnquiryPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsPage from './pages/TermsPage';
+import RefundPolicyPage from './pages/RefundPolicyPage';
+import DisclaimerPage from './pages/DisclaimerPage';
 
 // Admin pages
 import AdminLoginPage from './pages/admin/AdminLoginPage';
@@ -20,6 +24,7 @@ import AdminGallery from './pages/admin/AdminGallery';
 // Layout
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
+import ScrollToTop from './components/common/ScrollToTop';
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -44,6 +49,10 @@ function AppRoutes() {
       <Route path="/gallery" element={<PublicLayout><GalleryPage /></PublicLayout>} />
       <Route path="/contact" element={<PublicLayout><ContactPage /></PublicLayout>} />
       <Route path="/enquiry" element={<PublicLayout><EnquiryPage /></PublicLayout>} />
+      <Route path="/privacy-policy" element={<PublicLayout><PrivacyPolicyPage /></PublicLayout>} />
+      <Route path="/terms" element={<PublicLayout><TermsPage /></PublicLayout>} />
+      <Route path="/refund-policy" element={<PublicLayout><RefundPolicyPage /></PublicLayout>} />
+      <Route path="/disclaimer" element={<PublicLayout><DisclaimerPage /></PublicLayout>} />
 
       {/* Admin */}
       <Route path="/admin/login" element={<AdminLoginPage />} />
@@ -61,6 +70,7 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <ScrollToTop />
         <AppRoutes />
         <Toaster
           position="top-right"
