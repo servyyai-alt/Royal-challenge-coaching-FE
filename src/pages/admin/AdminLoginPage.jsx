@@ -54,9 +54,9 @@ export default function AdminLoginPage() {
               </div>
             </div>
 
-            <div className="bg-royal-50 rounded-xl p-3 text-xs text-royal-700 border border-royal-100">
+            {/* <div className="bg-royal-50 rounded-xl p-3 text-xs text-royal-700 border border-royal-100">
               <strong>Demo:</strong> admin@royalcoachingcentre.com / Admin@123
-            </div>
+            </div> */}
 
             <button type="submit" disabled={loading}
               className="btn-primary w-full flex items-center justify-center gap-2 py-3.5 disabled:opacity-60">

@@ -85,7 +85,7 @@ export default function GalleryPage() {
                   </div>
                   <div className="p-4">
                     <h3 className="font-display font-bold text-gray-800">{item.title}</h3>
-                    {item.description && <p className="text-gray-500 text-sm mt-1">{item.description}</p>}
+                    {item.description && <p className="text-gray-500 line-clamp-2 text-sm mt-1">{item.description}</p>}
                   </div>
                 </div>
               ))}
