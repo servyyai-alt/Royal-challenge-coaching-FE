@@ -11,13 +11,7 @@ export default function CoursesPage() {
     api.get('/courses').then(res => { setCourses(res.data.data); setLoading(false); }).catch(() => setLoading(false));
   }, []);
 
-  const gradients = [
-    'from-royal-800 to-royal-600',
-    'from-amber-600 to-yellow-500',
-    'from-teal-600 to-cyan-500',
-    'from-purple-700 to-purple-500',
-    'from-rose-700 to-pink-500',
-  ];
+  const gradients = [];
 
   if (loading) return (
     <div className="pt-[88px] min-h-screen flex items-center justify-center">

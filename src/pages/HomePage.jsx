@@ -227,7 +227,7 @@ export default function HomePage() {
                 </div>
 
                 <div className="relative z-10 p-6 min-h-[220px] flex flex-col">
-                  <div className="flex-1 bg-slate-900/50 rounded-2xl p-4 text-left flex flex-col justify-end opacity-90 group-hover:opacity-100 transition-opacity">
+                  <div className="flex-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-5 py-3 text-center hover:bg-white/20 transition-all duration-300 hover:-translate-y-1 p-4 flex flex-col justify-end opacity-90 group-hover:opacity-100 mt-5">
                     <h3 className="font-display mt-10 font-bold text-white text-2xl mb-1 drop-shadow">
                       {c.title}
                     </h3>
@@ -324,8 +324,21 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 gradient-royal text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
+      <section className="py-20 text-white text-center relative overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://assets.thehansindia.com/h-upload/2023/03/29/1344176-exams.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-royal-950/90 via-royal-900/75 to-royal-800/65" />
+          <div className="absolute inset-0 bg-gradient-to-t from-royal-950/70 via-transparent to-transparent" />
+        </div>
+
+        {/* Accent glow */}
+        <div className="absolute inset-0 opacity-15">
           <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-gold-400 blur-3xl" />
         </div>
         <div className="max-w-3xl mx-auto px-4 relative z-10">
