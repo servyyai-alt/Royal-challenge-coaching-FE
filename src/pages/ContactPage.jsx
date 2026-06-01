@@ -10,7 +10,7 @@ const HOURS = [
 export default function ContactPage() {
   return (
     <div className="pt-[88px]">
-      <section className="page-hero page-hero--contact py-16 text-center">
+      <section className="page-hero page-hero--contact py-20 sm:h-[350px] text-center">
         <div className="max-w-2xl mx-auto px-4">
           <h1 className="font-display text-4xl font-bold mb-3">Contact Us</h1>
           <p className="text-royal-200">We'd love to hear from you. Get in touch with us today.</p>

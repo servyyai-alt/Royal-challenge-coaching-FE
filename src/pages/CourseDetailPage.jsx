@@ -31,7 +31,7 @@ export default function CourseDetailPage() {
   return (
     <div className="pt-[88px]">
       <section className="page-hero page-hero--courses py-16">
-        <div className="max-w-5xl mx-auto px-4">
+        <div className="max-w-5xl mx-auto px-4 h-[150px]">
           <Link to="/courses" className="flex items-center gap-1.5 text-royal-200 hover:text-white mb-6 text-sm transition-colors">
             <ArrowLeft size={16} /> Back to Courses
           </Link>

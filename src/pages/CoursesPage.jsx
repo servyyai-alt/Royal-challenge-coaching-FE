@@ -29,7 +29,7 @@ export default function CoursesPage() {
     <div className="pt-[88px]">
       {/* Header */}
       <section className="page-hero page-hero--courses py-16 text-center">
-        <div className="max-w-3xl mx-auto px-4">
+        <div className="max-w-3xl mx-auto px-4 h-[200px] sm:h-[150px]">
           <p className="text-gold-300 text-sm font-semibold uppercase tracking-wider mb-2">Academics & Skills</p>
           <h1 className="font-display text-4xl font-bold mb-4">Our Courses & Programs</h1>
           <p className="text-royal-200">
