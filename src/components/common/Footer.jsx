@@ -99,7 +99,7 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between items-center gap-2">
           <div className="flex flex-col items-center sm:items-start gap-2">
             <p className="text-gray-500 text-sm text-center sm:text-left">
-              © 2024 Royal Coaching Centre. All rights reserved. Developed by Least Action Company
+              © 2026 Royal Coaching Centre. All rights reserved. Developed by Least Action Company
             </p>
             <div className="flex flex-wrap justify-center sm:justify-start gap-x-4 gap-y-2 text-xs">
               <Link to="/privacy-policy" className="text-gray-400 hover:text-gold-400 transition-colors">Privacy Policy</Link>

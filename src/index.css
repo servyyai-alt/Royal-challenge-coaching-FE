@@ -47,6 +47,9 @@
   .page-hero--home {
     background-image: url('./assets/hero/home.png');
   }
+  .page-hero--home1 {
+    background-image: url('./assets/hero/contact.png');
+  }
 
   .page-hero--contact {
     background-image: url('./assets/hero/contact.png');

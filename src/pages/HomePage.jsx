@@ -92,7 +92,7 @@ export default function HomePage() {
   return (
     <div className="pt-[88px]">
       {/* Hero */}
-      <section className="page-hero page-hero--home min-h-[600px] flex items-center">
+      <section className="page-hero page-hero--home1 lg:page-hero--home min-h-[600px] flex items-center">
         {/* BG pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-gold-400 blur-3xl" />
@@ -150,7 +150,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="hidden lg:flex flex-wrap gap-3 justify-center">
+            <div className="flex flex-wrap gap-3 justify-center">
               {[
                 "CBSE",
                 "ICSE",
