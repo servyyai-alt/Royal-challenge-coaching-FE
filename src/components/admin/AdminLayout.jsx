@@ -1,11 +1,12 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { LayoutDashboard, MessageSquare, Image, LogOut, Menu, X, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, MessageSquare, Image, LogOut, Menu, X, ChevronRight, GraduationCap } from 'lucide-react';
 import { useState } from 'react';
 
 const NAV = [
   { label: 'Dashboard', to: '/admin', icon: LayoutDashboard, exact: true },
-  { label: 'Enquiries', to: '/admin/enquiries', icon: MessageSquare },
+  { label: 'Registrations', to: '/admin/enquiries', icon: MessageSquare },
+  { label: 'Tutor Registrations', to: '/admin/tutor-registrations', icon: GraduationCap },
   { label: 'Gallery', to: '/admin/gallery', icon: Image },
 ];
 

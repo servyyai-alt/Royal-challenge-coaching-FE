@@ -17,7 +17,7 @@ export default function PrivacyPolicyPage() {
 
             <h2>Information We Collect</h2>
             <ul>
-              <li>Contact details (name, phone, email) submitted via enquiry/contact forms.</li>
+              <li>Contact details (name, phone, email) submitted via student registration/contact forms.</li>
               <li>Message content you voluntarily share with us.</li>
               <li>Basic technical data (IP address, browser/device info) from server logs.</li>
             </ul>
@@ -57,4 +57,3 @@ export default function PrivacyPolicyPage() {
     </div>
   );
 }
-

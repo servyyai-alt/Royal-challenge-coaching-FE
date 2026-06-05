@@ -6,6 +6,80 @@ import api from '../utils/api';
 export default function CoursesPage() {
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(true);
+  const timetable = [
+    {
+      time: '7:00 – 8:00 AM',
+      academic: 'Academic Tuition - Morning Batch',
+      abacus: 'Abacus - Weekend Prep / Practice',
+      robotics: 'Robotics - Weekday Lab Prep',
+      spokenEnglish: 'Spoken English - Individual Session',
+      hindi: 'Hindi - Revision / Support',
+    },
+    {
+      time: '8:00 – 9:00 AM',
+      academic: 'Academic Tuition - CBSE / ICSE / Matric',
+      abacus: 'Abacus - Weekend Batch',
+      robotics: 'Robotics - Coding Practice',
+      spokenEnglish: 'Spoken English - Group Session',
+      hindi: 'Hindi - Exam Coaching',
+    },
+    {
+      time: '9:00 – 10:00 AM',
+      academic: 'Academic Tuition - Doubt Clearing',
+      abacus: 'Abacus - Memory & Speed Drills',
+      robotics: 'Robotics - Electronics Basics',
+      spokenEnglish: 'Spoken English - Fluency Practice',
+      hindi: 'Hindi - Afternoon Batch Prep',
+    },
+    {
+      time: '10:00 – 11:00 AM',
+      academic: 'Academic Tuition - Weekly Tests',
+      abacus: 'Abacus - Weekend Session',
+      robotics: 'Robotics - Project Work',
+      spokenEnglish: 'Spoken English - Confidence Building',
+      hindi: 'Hindi - Government Exam Prep',
+    },
+    {
+      time: '11:00 – 12:00 PM',
+      academic: 'Academic Tuition - Evening Batch Prep',
+      abacus: 'Abacus - Fast Calculation Practice',
+      robotics: 'Robotics - Weekend Batch',
+      spokenEnglish: 'Spoken English - Grammar & Speaking',
+      hindi: 'Hindi - Afternoon Batch',
+    },
+    {
+      time: '12:00 – 1:00 PM',
+      academic: 'Academic Tuition - Evening Batch',
+      abacus: 'Abacus - Weekend Revision',
+      robotics: 'Robotics - Coding & Robotics Concepts',
+      spokenEnglish: 'Spoken English - Personal Coaching',
+      hindi: 'Hindi - Recap & Doubt Clearing',
+    },
+    {
+      time: '4:00 – 5:00 PM',
+      academic: 'Academic Tuition - Evening Batch',
+      abacus: 'Abacus - Weekend Batch',
+      robotics: 'Robotics - Weekday Batch',
+      spokenEnglish: 'Spoken English - Group Session',
+      hindi: 'Hindi - Afternoon Batch',
+    },
+    {
+      time: '5:00 – 6:00 PM',
+      academic: 'Academic Tuition - Doubt Clearing',
+      abacus: 'Abacus - Concentration Training',
+      robotics: 'Robotics - Project-Based Learning',
+      spokenEnglish: 'Spoken English - Individual Session',
+      hindi: 'Hindi - Exam Readiness',
+    },
+    {
+      time: '6:00 – 7:00 PM',
+      academic: 'Academic Tuition - Weekly Tests',
+      abacus: 'Abacus - Weekend Batch',
+      robotics: 'Robotics - Weekend Batch',
+      spokenEnglish: 'Spoken English - Fluency Practice',
+      hindi: 'Hindi - Afternoon Batch',
+    },
+  ];
 
   useEffect(() => {
     api.get('/courses').then(res => { setCourses(res.data.data); setLoading(false); }).catch(() => setLoading(false));
@@ -99,12 +173,52 @@ export default function CoursesPage() {
         </div>
       </section>
 
+      {/* Timetable */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-10">
+            <p className="text-gold-600 font-semibold text-sm uppercase tracking-wider mb-2">Weekly Schedule</p>
+            <h2 className="section-title mb-3">Course Timetable</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto">
+              A quick view of suggested time slots for each program, including tests, doubt-clearing, weekend batches, and specialized coaching.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto rounded-2xl border border-gray-200 shadow-sm bg-white">
+            <table className="min-w-[980px] w-full border-collapse">
+              <thead>
+                <tr className="bg-royal-950 text-white">
+                  <th className="p-4 text-left text-sm font-semibold">Time Slot</th>
+                  <th className="p-4 text-left text-sm font-semibold">Academic Tuition</th>
+                  <th className="p-4 text-left text-sm font-semibold">Abacus</th>
+                  <th className="p-4 text-left text-sm font-semibold">Robotics</th>
+                  <th className="p-4 text-left text-sm font-semibold">Spoken English</th>
+                  <th className="p-4 text-left text-sm font-semibold">Hindi</th>
+                </tr>
+              </thead>
+              <tbody>
+                {timetable.map((row, idx) => (
+                  <tr key={row.time} className={idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                    <td className="p-4 align-top font-semibold text-royal-900 text-sm whitespace-nowrap border-t border-gray-100">{row.time}</td>
+                    <td className="p-4 align-top text-sm text-gray-700 border-t border-gray-100">{row.academic}</td>
+                    <td className="p-4 align-top text-sm text-gray-700 border-t border-gray-100">{row.abacus}</td>
+                    <td className="p-4 align-top text-sm text-gray-700 border-t border-gray-100">{row.robotics}</td>
+                    <td className="p-4 align-top text-sm text-gray-700 border-t border-gray-100">{row.spokenEnglish}</td>
+                    <td className="p-4 align-top text-sm text-gray-700 border-t border-gray-100">{row.hindi}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-16 bg-white text-center">
         <div className="max-w-2xl mx-auto px-4">
           <h2 className="section-title mb-4">Ready to Enroll?</h2>
-          <p className="text-gray-500 mb-6">Fill out our enquiry form and our team will get back to you within 24 hours.</p>
-          <Link to="/enquiry" className="btn-primary">Submit Enquiry</Link>
+          <p className="text-gray-500 mb-6">Fill out our student registration form and our team will get back to you within 24 hours.</p>
+          <Link to="/enquiry" className="btn-primary">Student Registration</Link>
         </div>
       </section>
     </div>

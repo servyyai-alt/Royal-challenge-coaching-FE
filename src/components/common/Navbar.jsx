@@ -63,9 +63,13 @@ export default function Navbar() {
               {label}
             </NavLink>
           ))}
-          <Link to="/enquiry" className="btn-gold text-sm py-2 px-5">
-            Enquire Now
+           <Link to="/tutor-registration" className="border border-royal-200 text-royal-800 hover:bg-royal-50 text-sm py-2 px-5 rounded-full font-semibold transition-colors">
+            Tutor Registration
           </Link>
+          <Link to="/enquiry" className="btn-gold text-sm py-2 px-5">
+            Student Registration
+          </Link>
+         
         </div>
 
         {/* Mobile hamburger */}
@@ -96,9 +100,14 @@ export default function Navbar() {
                 {label}
               </NavLink>
             ))}
-            <Link to="/enquiry" className="block btn-gold text-center mt-3 text-sm py-3">
-              Enquire Now
+
+             <Link to="/tutor-registration" className="block border border-royal-200 text-royal-800 text-center mt-3 text-sm py-3 rounded-full font-semibold">
+              Tutor Registration
             </Link>
+            <Link to="/enquiry" className="block btn-gold text-center mt-3 text-sm py-3">
+              Student Registration
+            </Link>
+           
           </div>
         </div>
       )}

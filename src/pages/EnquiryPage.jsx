@@ -25,7 +25,7 @@ export default function EnquiryPage() {
     try {
       await api.post('/enquiries', form);
       setSubmitted(true);
-      toast.success('Enquiry submitted! We\'ll contact you shortly.');
+      toast.success('Registration submitted! We\'ll contact you shortly.');
     } catch (err) {
       toast.error(err.response?.data?.message || 'Something went wrong.');
     } finally {
@@ -39,7 +39,7 @@ export default function EnquiryPage() {
         <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
           <CheckCircle size={40} className="text-green-600" />
         </div>
-        <h2 className="font-display text-3xl font-bold text-royal-900 mb-3">Enquiry Received!</h2>
+        <h2 className="font-display text-3xl font-bold text-royal-900 mb-3">Registration Received!</h2>
         <p className="text-gray-600 mb-6">Thank you for your interest. Our team will contact you within 24 hours.</p>
         <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow text-left mb-6">
           <p className="text-sm font-semibold text-gray-700 mb-3">What happens next?</p>
@@ -59,7 +59,7 @@ export default function EnquiryPage() {
     <div className="pt-[88px]">
       <section className="page-hero page-hero--enquiry py-16 text-center">
         <div className="max-w-2xl mx-auto px-4">
-          <h1 className="font-display text-4xl font-bold mb-3">Enquire Now</h1>
+          <h1 className="font-display text-4xl font-bold mb-3">Student Registration</h1>
           <p className="text-royal-200">Fill in the form and we'll get back to you within 24 hours.</p>
         </div>
       </section>
@@ -120,7 +120,7 @@ export default function EnquiryPage() {
                 {loading ? (
                   <><div className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full"></div> Submitting...</>
                 ) : (
-                  <><Send size={16} /> Submit Enquiry</>
+                  <><Send size={16} /> Submit Registration</>
                 )}
               </button>
             </form>

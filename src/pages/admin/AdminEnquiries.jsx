@@ -36,7 +36,7 @@ export default function AdminEnquiries() {
       setEnquiries(res.data.data);
       setPagination({ total: res.data.total, pages: res.data.pages });
     } catch (err) {
-      toast.error('Failed to load enquiries');
+      toast.error('Failed to load registrations');
     } finally {
       setLoading(false);
     }
@@ -51,10 +51,10 @@ export default function AdminEnquiries() {
   };
 
   const handleDelete = async (id) => {
-    if (!confirm('Delete this enquiry?')) return;
+    if (!confirm('Delete this registration?')) return;
     try {
       await api.delete(`/enquiries/${id}`);
-      toast.success('Enquiry deleted.');
+      toast.success('Registration deleted.');
       fetchEnquiries();
     } catch { toast.error('Failed to delete.'); }
   };
@@ -68,7 +68,7 @@ export default function AdminEnquiries() {
   };
 
   return (
-    <AdminLayout title="Enquiries">
+    <AdminLayout title="Student Registrations">
       <div className="space-y-5">
         {/* Filters */}
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
@@ -102,7 +102,7 @@ export default function AdminEnquiries() {
         {/* Table */}
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
           <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
-            <p className="font-semibold text-gray-700 text-sm">{pagination.total} enquiries total</p>
+            <p className="font-semibold text-gray-700 text-sm">{pagination.total} registrations total</p>
           </div>
 
           {loading ? (
@@ -124,7 +124,7 @@ export default function AdminEnquiries() {
                 </thead>
                 <tbody>
                   {enquiries.length === 0 ? (
-                    <tr><td colSpan={6} className="text-center text-gray-400 py-10">No enquiries found.</td></tr>
+                    <tr><td colSpan={6} className="text-center text-gray-400 py-10">No registrations found.</td></tr>
                   ) : enquiries.map(enq => (
                     <tr key={enq._id}>
                       <td>

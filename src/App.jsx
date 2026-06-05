@@ -13,6 +13,7 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
 import RefundPolicyPage from './pages/RefundPolicyPage';
 import DisclaimerPage from './pages/DisclaimerPage';
+import TutorRegistrationPage from './pages/TutorRegistrationPage';
 
 // Admin pages
 import AdminLoginPage from './pages/admin/AdminLoginPage';
@@ -20,6 +21,8 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminEnquiries from './pages/admin/AdminEnquiries';
 import AdminEnquiryDetail from './pages/admin/AdminEnquiryDetail';
 import AdminGallery from './pages/admin/AdminGallery';
+import AdminTutorRegistrations from './pages/admin/AdminTutorRegistrations';
+import AdminTutorRegistrationDetail from './pages/admin/AdminTutorRegistrationDetail';
 
 // Layout
 import Navbar from './components/common/Navbar';
@@ -49,6 +52,7 @@ function AppRoutes() {
       <Route path="/gallery" element={<PublicLayout><GalleryPage /></PublicLayout>} />
       <Route path="/contact" element={<PublicLayout><ContactPage /></PublicLayout>} />
       <Route path="/enquiry" element={<PublicLayout><EnquiryPage /></PublicLayout>} />
+      <Route path="/tutor-registration" element={<PublicLayout><TutorRegistrationPage /></PublicLayout>} />
       <Route path="/privacy-policy" element={<PublicLayout><PrivacyPolicyPage /></PublicLayout>} />
       <Route path="/terms" element={<PublicLayout><TermsPage /></PublicLayout>} />
       <Route path="/refund-policy" element={<PublicLayout><RefundPolicyPage /></PublicLayout>} />
@@ -59,6 +63,8 @@ function AppRoutes() {
       <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
       <Route path="/admin/enquiries" element={<ProtectedRoute><AdminEnquiries /></ProtectedRoute>} />
       <Route path="/admin/enquiries/:id" element={<ProtectedRoute><AdminEnquiryDetail /></ProtectedRoute>} />
+      <Route path="/admin/tutor-registrations" element={<ProtectedRoute><AdminTutorRegistrations /></ProtectedRoute>} />
+      <Route path="/admin/tutor-registrations/:id" element={<ProtectedRoute><AdminTutorRegistrationDetail /></ProtectedRoute>} />
       <Route path="/admin/gallery" element={<ProtectedRoute><AdminGallery /></ProtectedRoute>} />
 
       <Route path="*" element={<Navigate to="/" replace />} />

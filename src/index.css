@@ -55,6 +55,10 @@
     background-image: url('./assets/hero/contact.png');
   }
 
+   .page-hero--contact1 {
+    background-image: url('./assets/hero/contact1.png');
+  }
+
   .page-hero--courses {
     background-image: url('./assets/hero/courses.png');
   }

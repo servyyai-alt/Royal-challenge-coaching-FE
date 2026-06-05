@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { MessageSquare, TrendingUp, UserCheck, Inbox, ArrowRight } from 'lucide-react';
+import { MessageSquare, TrendingUp, UserCheck, Inbox, ArrowRight, GraduationCap } from 'lucide-react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import api from '../../utils/api';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
@@ -9,16 +9,20 @@ const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Se
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState(null);
+  const [tutorStats, setTutorStats] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     api.get('/enquiries/stats')
       .then(res => { setStats(res.data.data); setLoading(false); })
       .catch(() => setLoading(false));
+    api.get('/tutor-registrations/stats')
+      .then(res => setTutorStats(res.data.data))
+      .catch(() => {});
   }, []);
 
   const cards = stats ? [
-    { label: 'Total Enquiries', value: stats.total, icon: MessageSquare, color: 'bg-royal-800', change: 'All time' },
+    { label: 'Total Registrations', value: stats.total, icon: MessageSquare, color: 'bg-royal-800', change: 'All time' },
     { label: 'New', value: stats.newCount, icon: Inbox, color: 'bg-gold-500', change: 'Needs attention' },
     { label: 'In Progress', value: stats.inProgress, icon: TrendingUp, color: 'bg-blue-600', change: 'Being processed' },
     { label: 'Enrolled', value: stats.enrolled, icon: UserCheck, color: 'bg-green-600', change: 'Converted' },
@@ -55,10 +59,33 @@ export default function AdminDashboard() {
             ))}
           </div>
 
+          {tutorStats && (
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+                <div className="flex justify-between items-start mb-4">
+                  <div className="bg-indigo-600 w-11 h-11 rounded-xl flex items-center justify-center shadow">
+                    <GraduationCap size={20} className="text-white" />
+                  </div>
+                  <span className="text-2xl font-display font-bold text-gray-800">{tutorStats.total}</span>
+                </div>
+                <p className="font-semibold text-gray-700 text-sm">Tutor Registrations</p>
+                <p className="text-gray-400 text-xs mt-0.5">All time</p>
+              </div>
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+                <p className="font-semibold text-gray-700 text-sm">Pending</p>
+                <p className="text-2xl font-display font-bold text-gray-800 mt-2">{tutorStats.pending}</p>
+              </div>
+              <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+                <p className="font-semibold text-gray-700 text-sm">Approved</p>
+                <p className="text-2xl font-display font-bold text-gray-800 mt-2">{tutorStats.approved}</p>
+              </div>
+            </div>
+          )}
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             {/* Monthly chart */}
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-              <h3 className="font-display font-bold text-royal-900 mb-5">Enquiries by Month</h3>
+              <h3 className="font-display font-bold text-royal-900 mb-5">Registrations by Month</h3>
               {chartData.length > 0 ? (
                 <ResponsiveContainer width="100%" height={220}>
                   <BarChart data={chartData}>
@@ -73,7 +100,7 @@ export default function AdminDashboard() {
 
             {/* By course */}
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-              <h3 className="font-display font-bold text-royal-900 mb-5">Enquiries by Course</h3>
+              <h3 className="font-display font-bold text-royal-900 mb-5">Registrations by Course</h3>
               {stats?.byCourse?.length ? (
                 <div className="space-y-3">
                   {stats.byCourse.map((c, i) => (
@@ -103,13 +130,16 @@ export default function AdminDashboard() {
             <h3 className="font-display font-bold text-royal-900 mb-4">Quick Actions</h3>
             <div className="flex flex-wrap gap-3">
               <Link to="/admin/enquiries" className="btn-primary flex items-center gap-2 text-sm py-2.5">
-                Manage Enquiries <ArrowRight size={14} />
+                Manage Registrations <ArrowRight size={14} />
+              </Link>
+              <Link to="/admin/tutor-registrations" className="btn-outline flex items-center gap-2 text-sm py-2.5">
+                Tutor Registrations <ArrowRight size={14} />
               </Link>
               <Link to="/admin/gallery" className="btn-outline flex items-center gap-2 text-sm py-2.5">
                 Manage Gallery <ArrowRight size={14} />
               </Link>
               <Link to="/enquiry" className="border border-gray-200 text-gray-600 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors flex items-center gap-2">
-                View Enquiry Form <ArrowRight size={14} />
+                View Registration Form <ArrowRight size={14} />
               </Link>
             </div>
           </div>

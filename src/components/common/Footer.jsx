@@ -44,7 +44,7 @@ export default function Footer() {
                 { label: 'Courses', to: '/courses' },
                 { label: 'Gallery', to: '/gallery' },
                 { label: 'Contact Us', to: '/contact' },
-                { label: 'Enquire Now', to: '/enquiry' },
+                { label: 'Student Registration', to: '/enquiry' },
               ].map(({ label, to }) => (
                 <li key={to}>
                   <Link to={to} className="text-gray-400 hover:text-gold-400 text-sm transition-colors flex items-center gap-1.5">

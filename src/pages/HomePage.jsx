@@ -128,7 +128,7 @@ export default function HomePage() {
                   to="/enquiry"
                   className="btn-gold flex items-center gap-2"
                 >
-                  Enquire Now <ArrowRight size={16} />
+                  Student Registration <ArrowRight size={16} />
                 </Link>
                 <Link
                   to="/courses"
@@ -357,7 +357,7 @@ export default function HomePage() {
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link to="/enquiry" className="btn-gold">
-              Enquire Now
+              Student Registration
             </Link>
             <a
               href="tel:9486091662"

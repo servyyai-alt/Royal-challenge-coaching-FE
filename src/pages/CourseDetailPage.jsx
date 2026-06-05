@@ -111,7 +111,7 @@ export default function CourseDetailPage() {
                   </div>
                 </div>
                 <div className="mt-6 space-y-3">
-                  <Link to="/enquiry" className="btn-primary block text-center text-sm py-3">Enquire Now</Link>
+                  <Link to="/enquiry" className="btn-primary block text-center text-sm py-3">Student Registration</Link>
                   <a href="tel:9486091662" className="btn-outline block text-center text-sm py-3">Call: 94860 91662</a>
                 </div>
               </div>

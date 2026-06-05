@@ -51,7 +51,7 @@ export default function AdminEnquiryDetail() {
   };
 
   if (loading) return (
-    <AdminLayout title="Enquiry Detail">
+    <AdminLayout title="Student Registration Detail">
       <div className="flex items-center justify-center py-20">
         <div className="animate-spin w-10 h-10 border-4 border-royal-800 border-t-transparent rounded-full"></div>
       </div>
@@ -59,16 +59,16 @@ export default function AdminEnquiryDetail() {
   );
 
   if (!enquiry) return (
-    <AdminLayout title="Enquiry Detail">
-      <p className="text-gray-500">Enquiry not found.</p>
+    <AdminLayout title="Student Registration Detail">
+      <p className="text-gray-500">Registration not found.</p>
     </AdminLayout>
   );
 
   return (
-    <AdminLayout title="Enquiry Detail">
+    <AdminLayout title="Student Registration Detail">
       <div className="mb-5">
-        <Link to="/admin/enquiries" className="flex items-center gap-1.5 text-gray-500 hover:text-royal-800 text-sm transition-colors">
-          <ArrowLeft size={16} /> Back to Enquiries
+          <Link to="/admin/enquiries" className="flex items-center gap-1.5 text-gray-500 hover:text-royal-800 text-sm transition-colors">
+          <ArrowLeft size={16} /> Back to Registrations
         </Link>
       </div>
 

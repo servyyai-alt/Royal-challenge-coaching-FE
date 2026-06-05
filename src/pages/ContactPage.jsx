@@ -10,7 +10,7 @@ const HOURS = [
 export default function ContactPage() {
   return (
     <div className="pt-[88px]">
-      <section className="page-hero page-hero--contact py-20 sm:h-[350px] text-center">
+      <section className="page-hero page-hero--contact1 py-20  text-center">
         <div className="max-w-2xl mx-auto px-4">
           <h1 className="font-display text-4xl font-bold mb-3">Contact Us</h1>
           <p className="text-royal-200">We'd love to hear from you. Get in touch with us today.</p>
@@ -130,9 +130,9 @@ export default function ContactPage() {
 
               <div className="card p-6 gradient-royal text-white">
                 <h3 className="font-display text-xl font-bold mb-2">Ready to Enroll?</h3>
-                <p className="text-royal-200 text-sm mb-5">Submit an enquiry and our team will call you back within 24 hours.</p>
+                <p className="text-royal-200 text-sm mb-5">Submit a student registration and our team will call you back within 24 hours.</p>
                 <Link to="/enquiry" className="bg-gold-500 hover:bg-gold-600 text-white px-6 py-3 rounded-full font-semibold text-sm inline-block transition-colors">
-                  Submit Enquiry
+                  Student Registration
                 </Link>
               </div>
             </div>
