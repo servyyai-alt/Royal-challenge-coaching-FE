@@ -92,10 +92,6 @@ export default function Footer() {
                 <Mail size={16} className="text-gold-400 flex-shrink-0" />
                 <span className="text-sm">velloreroyalcoaching@gmail.com</span>
               </a>
-              <a href="https://www.royalcoachingcenter.com" target="_blank" rel="noreferrer" className="flex gap-3 text-gray-400 hover:text-gold-400 transition-colors">
-                <Globe size={16} className="text-gold-400 flex-shrink-0" />
-                <span className="text-sm">www.royalcoachingcenter.com</span>
-              </a>
             </div>
           </div>
         </div>

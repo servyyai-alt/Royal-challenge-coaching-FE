@@ -1,9 +1,9 @@
 export default function PrivacyPolicyPage() {
   return (
     <div className="pt-[88px]">
-      <section className="page-hero page-hero--contact py-14 text-center">
+      <section className="page-hero page-hero--contact h-[300px] py-14 text-center">
         <div className="max-w-3xl mx-auto px-4">
-          <h1 className="font-display text-4xl font-bold mb-3">Privacy Policy</h1>
+          <h1 className="font-display text-4xl font-bold mb-3 mt-10">Privacy Policy</h1>
           <p className="text-royal-200">How we collect, use, and protect your information.</p>
         </div>
       </section>
