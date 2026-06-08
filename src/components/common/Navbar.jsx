@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, ChevronDown } from 'lucide-react';
+import logo from '../../assets/logo.png';
 
 const NAV_ITEMS = [
   { label: 'Home', to: '/' },
@@ -40,9 +41,11 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl gradient-royal flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
-            <span className="text-white font-display font-bold text-sm">RCC</span>
-          </div>
+          <img
+            src={logo}
+            alt="Royal Coaching Centre logo"
+            className="w-10 h-10 rounded-xl object-contain shadow-lg group-hover:scale-105 transition-transform bg-white"
+          />
           <div className="">
             <p className="font-display font-bold text-royal-900 text-sm leading-tight">Royal Coaching Centre</p>
             <p className="text-[10px] text-gray-500 font-body">Learn • Grow • Succeed</p>

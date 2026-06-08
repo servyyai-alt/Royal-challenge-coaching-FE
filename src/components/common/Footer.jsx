@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Phone, Mail, MapPin, Globe, Facebook, Instagram, Youtube, MessageCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Globe, Facebook, Instagram, Youtube, MessageCircle, X } from 'lucide-react';
+import logo from '../../assets/logo.png';
 
 export default function Footer() {
   return (
@@ -9,9 +10,11 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gold-500 flex items-center justify-center shadow-lg">
-                <span className="text-white font-display font-bold text-sm">RCC</span>
-              </div>
+              <img
+                src={logo}
+                alt="Royal Coaching Centre logo"
+                className="w-10 h-10 rounded-xl object-contain shadow-lg bg-white"
+              />
               <div>
                 <p className="font-display font-bold text-lg leading-tight">Royal Coaching Centre</p>
                 <p className="text-xs text-gray-400">Learn • Grow • Succeed</p>
@@ -22,9 +25,10 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { Icon: Facebook, href: '#', color: 'hover:bg-blue-600' },
-                { Icon: Instagram, href: '#', color: 'hover:bg-pink-600' },
-                { Icon: Youtube, href: '#', color: 'hover:bg-red-600' },
+                { Icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61590686069413', color: 'hover:bg-blue-600' },
+                { Icon: Instagram, href: 'https://www.instagram.com/velloreroyalcoaching/', color: 'hover:bg-pink-600' },
+                { Icon: Youtube, href: 'https://www.youtube.com/@velloreroyalcoachingcentre', color: 'hover:bg-red-600' },
+                { Icon: X, href: 'https://x.com/royal_coaching_', color: 'hover:bg-yellow-600' },
                 { Icon: MessageCircle, href: 'https://wa.me/918667717266', color: 'hover:bg-green-600' },
               ].map(({ Icon, href, color }, i) => (
                 <a key={i} href={href} target="_blank" rel="noreferrer"
@@ -84,9 +88,9 @@ export default function Footer() {
                 <Phone size={16} className="text-gold-400 flex-shrink-0" />
                 <span className="text-sm font-semibold">94860 91662</span>
               </a>
-              <a href="mailto:info@royalcoachingcenter.com" className="flex gap-3 text-gray-400 hover:text-gold-400 transition-colors">
+              <a href="mailto:velloreroyalcoaching@gmail.com" className="flex gap-3 text-gray-400 hover:text-gold-400 transition-colors">
                 <Mail size={16} className="text-gold-400 flex-shrink-0" />
-                <span className="text-sm">info@royalcoachingcenter.com</span>
+                <span className="text-sm">velloreroyalcoaching@gmail.com</span>
               </a>
               <a href="https://www.royalcoachingcenter.com" target="_blank" rel="noreferrer" className="flex gap-3 text-gray-400 hover:text-gold-400 transition-colors">
                 <Globe size={16} className="text-gold-400 flex-shrink-0" />
