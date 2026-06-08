@@ -1,0 +1,17 @@
+{
+  "name": "Royal Coaching Centre",
+  "short_name": "RCC",
+  "description": "Royal Coaching Centre in Vellore offers tuition, Abacus, Robotics, Spoken English, and Hindi coaching.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

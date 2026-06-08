@@ -28,6 +28,7 @@ import AdminTutorRegistrationDetail from './pages/admin/AdminTutorRegistrationDe
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import ScrollToTop from './components/common/ScrollToTop';
+import SEO from './components/common/SEO';
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -42,21 +43,43 @@ const PublicLayout = ({ children }) => (
   </>
 );
 
+const Page = ({ seo, children }) => (
+  <>
+    <SEO {...seo} />
+    {children}
+  </>
+);
+
+const homeJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  name: 'Royal Coaching Centre',
+  url: typeof window !== 'undefined' ? window.location.origin : 'https://www.royalcoachingcenter.com',
+  logo: typeof window !== 'undefined' ? `${window.location.origin}/logo.png` : 'https://www.royalcoachingcenter.com/logo.png',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Vellore',
+    addressRegion: 'Tamil Nadu',
+    addressCountry: 'IN',
+  },
+  telephone: '+91 94860 91662',
+};
+
 function AppRoutes() {
   return (
     <Routes>
       {/* Public */}
-      <Route path="/" element={<PublicLayout><HomePage /></PublicLayout>} />
-      <Route path="/courses" element={<PublicLayout><CoursesPage /></PublicLayout>} />
-      <Route path="/courses/:id" element={<PublicLayout><CourseDetailPage /></PublicLayout>} />
-      <Route path="/gallery" element={<PublicLayout><GalleryPage /></PublicLayout>} />
-      <Route path="/contact" element={<PublicLayout><ContactPage /></PublicLayout>} />
-      <Route path="/enquiry" element={<PublicLayout><EnquiryPage /></PublicLayout>} />
-      <Route path="/tutor-registration" element={<PublicLayout><TutorRegistrationPage /></PublicLayout>} />
-      <Route path="/privacy-policy" element={<PublicLayout><PrivacyPolicyPage /></PublicLayout>} />
-      <Route path="/terms" element={<PublicLayout><TermsPage /></PublicLayout>} />
-      <Route path="/refund-policy" element={<PublicLayout><RefundPolicyPage /></PublicLayout>} />
-      <Route path="/disclaimer" element={<PublicLayout><DisclaimerPage /></PublicLayout>} />
+      <Route path="/" element={<PublicLayout><Page seo={{ title: 'Best Tuition in Vellore', path: '/', jsonLd: homeJsonLd }}><HomePage /></Page></PublicLayout>} />
+      <Route path="/courses" element={<PublicLayout><Page seo={{ title: 'Courses and Programs', path: '/courses' }}><CoursesPage /></Page></PublicLayout>} />
+      <Route path="/courses/:id" element={<PublicLayout><Page seo={{ title: 'Course Details', path: '/courses' }}><CourseDetailPage /></Page></PublicLayout>} />
+      <Route path="/gallery" element={<PublicLayout><Page seo={{ title: 'Gallery', path: '/gallery' }}><GalleryPage /></Page></PublicLayout>} />
+      <Route path="/contact" element={<PublicLayout><Page seo={{ title: 'Contact Royal Coaching Centre', path: '/contact' }}><ContactPage /></Page></PublicLayout>} />
+      <Route path="/enquiry" element={<PublicLayout><Page seo={{ title: 'Student Registration', path: '/enquiry' }}><EnquiryPage /></Page></PublicLayout>} />
+      <Route path="/tutor-registration" element={<PublicLayout><Page seo={{ title: 'Teacher Registration', path: '/tutor-registration' }}><TutorRegistrationPage /></Page></PublicLayout>} />
+      <Route path="/privacy-policy" element={<PublicLayout><Page seo={{ title: 'Privacy Policy', path: '/privacy-policy', noindex: true }}><PrivacyPolicyPage /></Page></PublicLayout>} />
+      <Route path="/terms" element={<PublicLayout><Page seo={{ title: 'Terms and Conditions', path: '/terms', noindex: true }}><TermsPage /></Page></PublicLayout>} />
+      <Route path="/refund-policy" element={<PublicLayout><Page seo={{ title: 'Refund Policy', path: '/refund-policy', noindex: true }}><RefundPolicyPage /></Page></PublicLayout>} />
+      <Route path="/disclaimer" element={<PublicLayout><Page seo={{ title: 'Disclaimer', path: '/disclaimer', noindex: true }}><DisclaimerPage /></Page></PublicLayout>} />
 
       {/* Admin */}
       <Route path="/admin/login" element={<AdminLoginPage />} />
