@@ -44,7 +44,7 @@ export default function AdminLoginPage() {
             <div>
               <label className="label">Email Address</label>
               <input type="email" value={form.email} onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
-                placeholder="admin@royalcoachingcentre.com" className="input" required />
+                placeholder="email..." className="input" required />
             </div>
             <div>
               <label className="label">Password</label>
