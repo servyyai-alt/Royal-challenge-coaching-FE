@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, Globe, Clock, Facebook, Instagram, Youtube, MessageCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { CONTACT } from '../data/siteContent';
 
 const HOURS = [
   { day: 'Monday – Friday', time: '7:00 AM – 8:00 PM' },
@@ -32,41 +33,41 @@ export default function ContactPage() {
                     <div>
                       <p className="font-semibold text-sm text-gray-800">Address</p>
                       <p className="text-gray-600 text-sm leading-relaxed mt-0.5">
-                        #25, Uthiramatha Koil Street, Old Town, Vellore.<br />
-                        <span className="text-gray-500 text-xs">Near Arulmigu Mariyamman And Padavettamman Thirukovil</span>
+                        {CONTACT.addressLine1}<br />
+                        <span className="text-gray-500 text-xs">{CONTACT.addressLine2}</span>
                       </p>
                     </div>
                   </div>
 
-                  <a href="tel:9486091662" className="flex gap-4 hover:bg-gray-50 -mx-2 px-2 py-2 rounded-xl transition-colors group">
+                  <a href={CONTACT.phoneHref} className="flex gap-4 hover:bg-gray-50 -mx-2 px-2 py-2 rounded-xl transition-colors group">
                     <div className="w-11 h-11 bg-gradient-to-br from-gold-500 to-gold-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow">
                       <Phone size={18} className="text-white" />
                     </div>
                     <div>
                       <p className="font-semibold text-sm text-gray-800">Phone</p>
-                      <p className="text-royal-800 font-bold group-hover:text-royal-600 transition-colors">94860 91662</p>
+                      <p className="text-royal-800 font-bold group-hover:text-royal-600 transition-colors">{CONTACT.phone}</p>
                     </div>
                   </a>
 
-                  <a href="mailto:info@royalcoachingcenter.com" className="flex gap-4 hover:bg-gray-50 -mx-2 px-2 py-2 rounded-xl transition-colors">
+                  <a href={CONTACT.emailHref} className="flex gap-4 hover:bg-gray-50 -mx-2 px-2 py-2 rounded-xl transition-colors">
                     <div className="w-11 h-11 bg-gradient-to-br from-purple-600 to-purple-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow">
                       <Mail size={18} className="text-white" />
                     </div>
                     <div>
                       <p className="font-semibold text-sm text-gray-800">Email</p>
-                      <p className="text-gray-600 text-sm">info@royalcoachingcenter.com</p>
+                      <p className="text-gray-600 text-sm">{CONTACT.email}</p>
                     </div>
                   </a>
 
-                  <a href="https://www.royalcoachingcenter.com" target="_blank" rel="noreferrer" className="flex gap-4 hover:bg-gray-50 -mx-2 px-2 py-2 rounded-xl transition-colors">
+                  {/* <a href={CONTACT.websiteHref} target="_blank" rel="noreferrer" className="flex gap-4 hover:bg-gray-50 -mx-2 px-2 py-2 rounded-xl transition-colors">
                     <div className="w-11 h-11 bg-gradient-to-br from-teal-600 to-cyan-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow">
                       <Globe size={18} className="text-white" />
                     </div>
                     <div>
                       <p className="font-semibold text-sm text-gray-800">Website</p>
-                      <p className="text-gray-600 text-sm">www.royalcoachingcenter.com</p>
+                      <p className="text-gray-600 text-sm">{CONTACT.website}</p>
                     </div>
-                  </a>
+                  </a> */}
                 </div>
               </div>
 
@@ -88,9 +89,9 @@ export default function ContactPage() {
                 <h2 className="font-display text-xl font-bold text-royal-900 mb-4">Follow Us</h2>
                 <div className="flex gap-3">
                   {[
-                    { Icon: Facebook, label: 'Facebook', color: 'bg-blue-600', href: '#' },
-                    { Icon: Instagram, label: 'Instagram', color: 'bg-pink-600', href: '#' },
-                    { Icon: Youtube, label: 'YouTube', color: 'bg-red-600', href: '#' },
+                    { Icon: Facebook, label: 'Facebook', color: 'bg-blue-600', href: 'https://www.facebook.com/profile.php?id=61590686069413' },
+                    { Icon: Instagram, label: 'Instagram', color: 'bg-pink-600', href: 'https://www.instagram.com/velloreroyalcoaching/' },
+                    { Icon: Youtube, label: 'YouTube', color: 'bg-red-600', href: 'https://www.youtube.com/@velloreroyalcoachingcentre' },
                     { Icon: MessageCircle, label: 'WhatsApp', color: 'bg-green-600', href: 'https://wa.me/919486091662' },
                   ].map(({ Icon, label, color, href }) => (
                     <a key={label} href={href} target="_blank" rel="noreferrer"
@@ -108,7 +109,7 @@ export default function ContactPage() {
                 <div className="bg-gray-100 h-80 flex items-center justify-center relative">
                   <iframe
                     title="Royal Coaching Centre Location"
-                    src="https://maps.google.com/maps?q=Vellore+Old+Town&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                    src={`https://maps.google.com/maps?q=${encodeURIComponent(CONTACT.mapQuery)}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
                     className="w-full h-full border-0"
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
@@ -116,7 +117,7 @@ export default function ContactPage() {
                 </div>
                 <div className="p-5">
                   <p className="font-semibold text-gray-800 mb-1">Royal Coaching Centre</p>
-                  <p className="text-gray-500 text-sm">#25, Uthiramatha Koil Street, Old Town, Vellore.</p>
+                  <p className="text-gray-500 text-sm">{CONTACT.addressLine1}</p>
                   <a
                     href="https://maps.google.com/?q=Vellore+Old+Town"
                     target="_blank"

@@ -1,22 +1,10 @@
-import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { CheckCircle2, Clock, GraduationCap, ArrowLeft } from 'lucide-react';
-import api from '../utils/api';
+import { COURSES } from '../data/siteContent';
 
 export default function CourseDetailPage() {
   const { id } = useParams();
-  const [course, setCourse] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    api.get(`/courses/${id}`).then(res => { setCourse(res.data.data); setLoading(false); }).catch(() => setLoading(false));
-  }, [id]);
-
-  if (loading) return (
-    <div className="pt-[88px] min-h-screen flex items-center justify-center">
-      <div className="animate-spin w-10 h-10 border-4 border-royal-800 border-t-transparent rounded-full"></div>
-    </div>
-  );
+  const course = COURSES.find((item) => item.id === id);
 
   if (!course) return (
     <div className="pt-[88px] min-h-screen flex items-center justify-center text-center">
@@ -112,7 +100,7 @@ export default function CourseDetailPage() {
                 </div>
                 <div className="mt-6 space-y-3">
                   <Link to="/enquiry" className="btn-primary block text-center text-sm py-3">Student Registration</Link>
-                  <a href="tel:9486091662" className="btn-outline block text-center text-sm py-3">Call: 94860 91662</a>
+                        <a href="tel:9486091662" className="btn-outline block text-center text-sm py-3">Call: 94860 91662</a>
                 </div>
               </div>
             </div>

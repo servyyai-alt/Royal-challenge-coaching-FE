@@ -136,13 +136,13 @@ export default function EnquiryPage() {
                 <p className="font-bold text-royal-900 group-hover:text-royal-700">94860 91662</p>
               </div>
             </a>
-            <a href="mailto:info@royalcoachingcenter.com" className="card p-5 flex items-center gap-4 hover:border-royal-200 group">
+            <a href="mailto:velloreroyalcoachingcentre@gmail.com" className="card p-5 flex items-center gap-4 hover:border-royal-200 group">
               <div className="w-12 h-12 bg-gradient-to-br from-gold-500 to-gold-600 rounded-xl flex items-center justify-center flex-shrink-0">
                 <Mail size={20} className="text-white" />
               </div>
               <div>
                 <p className="text-xs text-gray-500">Email Us</p>
-                <p className="font-bold text-royal-900 group-hover:text-royal-700 text-sm">info@royalcoachingcenter.com</p>
+                <p className="font-bold text-royal-900 group-hover:text-royal-700 text-xs">velloreroyalcoachingcentre@gmail.com</p>
               </div>
             </a>
           </div>

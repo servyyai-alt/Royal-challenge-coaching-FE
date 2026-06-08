@@ -1,11 +1,8 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronRight, ArrowRight } from 'lucide-react';
-import api from '../utils/api';
+import { COURSES } from '../data/siteContent';
 
 export default function CoursesPage() {
-  const [courses, setCourses] = useState([]);
-  const [loading, setLoading] = useState(true);
   const timetable = [
     {
       time: '7:00 – 8:00 AM',
@@ -81,17 +78,7 @@ export default function CoursesPage() {
     },
   ];
 
-  useEffect(() => {
-    api.get('/courses').then(res => { setCourses(res.data.data); setLoading(false); }).catch(() => setLoading(false));
-  }, []);
-
   const gradients = [];
-
-  if (loading) return (
-    <div className="pt-[88px] min-h-screen flex items-center justify-center">
-      <div className="animate-spin w-10 h-10 border-4 border-royal-800 border-t-transparent rounded-full"></div>
-    </div>
-  );
 
   return (
     <div className="pt-[88px]">
@@ -123,7 +110,7 @@ export default function CoursesPage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {courses.map((course, i) => (
+            {COURSES.map((course, i) => (
               <div key={course.id} className="card overflow-hidden group">
                 <div className="relative h-44">
                   <img
@@ -151,7 +138,7 @@ export default function CoursesPage() {
                   )}
 
                   <div className="space-y-1.5 mb-5">
-                    {course.features.slice(0, 4).map((f, fi) => (
+                  {course.features.slice(0, 4).map((f, fi) => (
                       <div key={fi} className="flex items-center gap-2 text-xs text-gray-600">
                         <div className="w-1.5 h-1.5 rounded-full bg-gold-500 flex-shrink-0"></div>
                         {f}
