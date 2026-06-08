@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Eye, EyeOff, LogIn } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import toast from 'react-hot-toast';
+import logo from '../../assets/logo.png';
 
 export default function AdminLoginPage() {
   const [form, setForm] = useState({ email: '', password: '' });
@@ -27,8 +28,12 @@ export default function AdminLoginPage() {
 
       <div className="relative w-full max-w-sm">
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gold-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-2xl">
-            <span className="font-display font-bold text-xl text-white">RCC</span>
+          <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-2xl">
+            <img
+              src={logo}
+              alt="Royal Coaching Centre logo"
+              className="w-15 h-15 rounded-xl object-contain shadow-lg group-hover:scale-105 transition-transform bg-white"
+            />
           </div>
           <h1 className="font-display text-2xl font-bold text-white">Admin Portal</h1>
           <p className="text-royal-300 text-sm mt-1">Royal Coaching Centre</p>
