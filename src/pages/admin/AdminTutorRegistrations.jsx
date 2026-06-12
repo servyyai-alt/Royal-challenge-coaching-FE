@@ -9,16 +9,14 @@ const STATUS_BADGES = {
   pending: 'badge-new',
   approved: 'badge-enrolled',
 };
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const EMPTY = {
   name: '',
   tutorCode: '',
   genderAge: '',
-  interestedInTeaching: 'Home Tuition',
-  city: '',
-  area: '',
-  subarea: '',
-  preferredArea: '',
+  interestedInTeaching: '',
+  address: '',
   experienceOfTeaching: '',
   interestedInClass: '',
   interestedInSubjects: '',
@@ -32,20 +30,17 @@ const EMPTY = {
 
 const FIELD_LABELS = {
   name: 'Name *',
-  tutorCode: 'Tutor Code *',
-  genderAge: 'Gender / Age *',
-  interestedInTeaching: 'Interested in Teaching *',
-  city: 'City *',
-  area: 'Area *',
-  subarea: 'Subarea *',
-  preferredArea: 'Preferred Area *',
-  experienceOfTeaching: 'Experience of Teaching *',
-  interestedInClass: 'Interested in Class *',
-  interestedInSubjects: 'Interested in Subjects *',
-  qualification: 'Qualification *',
-  feesExpectation: 'Fees Expectation *',
-  phone: 'Phone',
-  email: 'Email',
+  tutorCode: 'Tutor Code',
+  genderAge: 'Gender / Age',
+  interestedInTeaching: 'Interested in Teaching',
+  address: 'Address *',
+  experienceOfTeaching: 'Experience of Teaching',
+  interestedInClass: 'Interested in Class',
+  interestedInSubjects: 'Interested in Subjects',
+  qualification: 'Qualification',
+  feesExpectation: 'Fees Expectation',
+  phone: 'Phone *',
+  email: 'Email *',
 };
 
 export default function AdminTutorRegistrations() {
@@ -86,8 +81,12 @@ export default function AdminTutorRegistrations() {
 
   const submit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.tutorCode || !form.interestedInTeaching) {
+    if (!form.name || !form.phone || !form.address || !form.email) {
       toast.error('Please fill required fields.');
+      return;
+    }
+    if (!EMAIL_RE.test(String(form.email).trim())) {
+      toast.error('Please enter a valid email address.');
       return;
     }
     setSaving(true);
@@ -148,7 +147,7 @@ export default function AdminTutorRegistrations() {
             <form onSubmit={handleSearch} className="flex gap-2 flex-1 min-w-[220px]">
               <div className="relative flex-1">
                 <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                <input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder="Search by name, code, city..." className="input pl-9 py-2.5 text-sm w-full" />
+                <input value={searchInput} onChange={(e) => setSearchInput(e.target.value)} placeholder="Search by name, code, address..." className="input pl-9 py-2.5 text-sm w-full" />
               </div>
               <button type="submit" className="btn-primary py-2.5 px-4 text-sm">Search</button>
             </form>
@@ -174,7 +173,7 @@ export default function AdminTutorRegistrations() {
               <table className="w-full admin-table">
                 <thead>
                   <tr>
-                    <th>Name</th><th>Code</th><th>City</th><th>Subject</th><th>Status</th><th>Actions</th>
+                    <th>Name</th><th>Code</th><th>Address</th><th>Subject</th><th>Status</th><th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -184,7 +183,7 @@ export default function AdminTutorRegistrations() {
                     <tr key={t._id}>
                       <td><p className="font-semibold text-gray-800">{t.name}</p><p className="text-xs text-gray-400">{t.phone || t.email}</p></td>
                       <td>{t.tutorCode}</td>
-                      <td>{t.city}</td>
+                      <td>{t.address}</td>
                       <td>{t.interestedInSubjects}</td>
                       <td>
                         <select value={t.status} onChange={(e) => updateStatus(t._id, e.target.value)} className={`${STATUS_BADGES[t.status]} border-0 bg-transparent cursor-pointer text-xs font-semibold rounded-full px-2 py-0.5`}>

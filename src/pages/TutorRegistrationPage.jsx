@@ -9,10 +9,7 @@ const INITIAL = {
   tutorCode: '',
   genderAge: '',
   interestedInTeaching: '',
-  city: '',
-  area: '',
-  subarea: '',
-  preferredArea: '',
+  address: '',
   experienceOfTeaching: '',
   interestedInClass: '',
   interestedInSubjects: '',
@@ -23,6 +20,7 @@ const INITIAL = {
 };
 
 const TEACHING = ['Home Tuition', 'Group Tuition'];
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function TutorRegistrationPage() {
   const [form, setForm] = useState(INITIAL);
@@ -33,12 +31,12 @@ export default function TutorRegistrationPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const required = ['name', 'tutorCode', 'genderAge', 'interestedInTeaching', 'city', 'area', 'subarea', 'preferredArea', 'experienceOfTeaching', 'interestedInClass', 'interestedInSubjects', 'qualification', 'feesExpectation'];
+    const required = ['name', 'phone', 'address', 'email'];
     if (required.some((k) => !String(form[k] || '').trim())) {
       toast.error('Please fill all required fields.');
       return;
     }
-    if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+    if (!EMAIL_RE.test(String(form.email).trim())) {
       toast.error('Please enter a valid email address.');
       return;
     }
@@ -82,23 +80,20 @@ export default function TutorRegistrationPage() {
           <form onSubmit={handleSubmit} className="card p-8 space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <input name="name" value={form.name} onChange={handleChange} placeholder="Name *" className="input" />
-              <input name="tutorCode" value={form.tutorCode} onChange={handleChange} placeholder="Tutor Code *" className="input" />
-              <input name="genderAge" value={form.genderAge} onChange={handleChange} placeholder="Gender / Age *" className="input" />
+              <input name="tutorCode" value={form.tutorCode} onChange={handleChange} placeholder="Tutor Code" className="input" />
+              <input name="genderAge" value={form.genderAge} onChange={handleChange} placeholder="Gender / Age" className="input" />
               <select name="interestedInTeaching" value={form.interestedInTeaching} onChange={handleChange} className="input">
-                <option value="">Interested in Teaching *</option>
+                <option value="">Interested in Teaching</option>
                 {TEACHING.map((t) => <option key={t} value={t}>{t}</option>)}
               </select>
-              <input name="city" value={form.city} onChange={handleChange} placeholder="City *" className="input" />
-              <input name="area" value={form.area} onChange={handleChange} placeholder="Area *" className="input" />
-              <input name="subarea" value={form.subarea} onChange={handleChange} placeholder="Subarea *" className="input" />
-              <input name="preferredArea" value={form.preferredArea} onChange={handleChange} placeholder="Preferred Area *" className="input" />
-              <input name="experienceOfTeaching" value={form.experienceOfTeaching} onChange={handleChange} placeholder="Experience of Teaching *" className="input" />
-              <input name="interestedInClass" value={form.interestedInClass} onChange={handleChange} placeholder="Interested in Class *" className="input" />
-              <input name="interestedInSubjects" value={form.interestedInSubjects} onChange={handleChange} placeholder="Interested in Subjects *" className="input" />
-              <input name="qualification" value={form.qualification} onChange={handleChange} placeholder="Qualification *" className="input" />
-              <input name="feesExpectation" value={form.feesExpectation} onChange={handleChange} placeholder="Fees Expectation *" className="input" />
-              <input name="phone" value={form.phone} onChange={handleChange} placeholder="Phone Number" className="input" />
-              <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="Email Address" className="input" />
+              <input name="address" value={form.address} onChange={handleChange} placeholder="Address *" className="input md:col-span-2" />
+              <input name="experienceOfTeaching" value={form.experienceOfTeaching} onChange={handleChange} placeholder="Experience of Teaching" className="input" />
+              <input name="interestedInClass" value={form.interestedInClass} onChange={handleChange} placeholder="Interested in Class" className="input" />
+              <input name="interestedInSubjects" value={form.interestedInSubjects} onChange={handleChange} placeholder="Interested in Subjects" className="input" />
+              <input name="qualification" value={form.qualification} onChange={handleChange} placeholder="Qualification" className="input" />
+              <input name="feesExpectation" value={form.feesExpectation} onChange={handleChange} placeholder="Fees Expectation" className="input" />
+              <input name="phone" value={form.phone} onChange={handleChange} placeholder="Phone Number *" className="input" />
+              <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="Email Address *" className="input" />
             </div>
 
             <button type="submit" disabled={loading} className="btn-primary w-full flex items-center justify-center gap-2 py-4 disabled:opacity-60">

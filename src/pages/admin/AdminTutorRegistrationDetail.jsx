@@ -50,14 +50,12 @@ export default function AdminTutorRegistrationDetail() {
         <div className="lg:col-span-2 space-y-5">
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
             <h2 className="font-display text-xl font-bold text-royal-900">{item.name}</h2>
-            <p className="text-gray-500 text-sm mt-1">{item.tutorCode} · {item.city}</p>
+            <p className="text-gray-500 text-sm mt-1">{item.tutorCode} · {item.address}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm mt-5">
               {[
                 ['Gender/Age', item.genderAge],
                 ['Teaching', item.interestedInTeaching],
-                ['Area', item.area],
-                ['Subarea', item.subarea],
-                ['Preferred Area', item.preferredArea],
+                ['Address', item.address],
                 ['Experience', item.experienceOfTeaching],
                 ['Class', item.interestedInClass],
                 ['Subjects', item.interestedInSubjects],

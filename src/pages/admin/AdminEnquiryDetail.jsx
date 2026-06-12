@@ -115,10 +115,10 @@ export default function AdminEnquiryDetail() {
 
           {/* Replies */}
           <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
-            <h3 className="font-display font-bold text-royal-900 mb-4">Replies ({enquiry.replies.length})</h3>
+            <h3 className="font-display font-bold text-royal-900 mb-4">Internal Notes ({enquiry.replies.length})</h3>
 
             {enquiry.replies.length === 0 ? (
-              <p className="text-gray-400 text-sm text-center py-6">No replies yet. Add one below.</p>
+              <p className="text-gray-400 text-sm text-center py-6">No notes yet. Add one below.</p>
             ) : (
               <div className="space-y-3 mb-5">
                 {enquiry.replies.map((r, i) => (
@@ -135,11 +135,11 @@ export default function AdminEnquiryDetail() {
 
             <form onSubmit={handleReply} className="space-y-3">
               <textarea value={reply} onChange={e => setReply(e.target.value)}
-                placeholder="Write a reply or internal note..." rows={3} className="input resize-none text-sm" />
+                placeholder="Write a internal note..." rows={3} className="input resize-none text-sm" />
               <button type="submit" disabled={replying || !reply.trim()}
                 className="btn-primary flex items-center gap-2 text-sm py-2.5 disabled:opacity-50">
                 {replying ? <div className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full"></div>
-                  : <><Send size={14} /> Add Reply</>}
+                  : <><Send size={14} /> Add Notes</>}
               </button>
             </form>
           </div>

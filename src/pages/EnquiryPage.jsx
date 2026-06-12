@@ -17,7 +17,7 @@ export default function EnquiryPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.phone || !form.course) {
+    if (!form.name || !form.phone || !form.course || !form.grade) {
       toast.error('Please fill all required fields.');
       return;
     }
@@ -75,13 +75,13 @@ export default function EnquiryPage() {
                 </div>
                 <div>
                   <label className="label">Phone Number *</label>
-                  <input name="phone" value={form.phone} onChange={handleChange} placeholder="94860 91662" className="input" required />
+                  <input name="phone" value={form.phone} onChange={handleChange} placeholder="9999999999" className="input" required />
                 </div>
               </div>
 
               <div>
-                <label className="label">Email Address *</label>
-                <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="yourmail@example.com" className="input" required />
+                <label className="label">Email Address</label>
+                <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="yourmail@example.com" className="input" />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -93,8 +93,8 @@ export default function EnquiryPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="label">Grade / Standard</label>
-                  <select name="grade" value={form.grade} onChange={handleChange} className="input">
+                  <label className="label">Grade / Standard *</label>
+                  <select name="grade" value={form.grade} onChange={handleChange} className="input" required>
                     <option value="">Select Grade</option>
                     {GRADES.map(g => <option key={g} value={g}>{g}</option>)}
                   </select>
