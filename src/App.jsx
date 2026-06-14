@@ -1,6 +1,8 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { useEffect } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
+import ReactGA from "react-ga4";
 
 // Public pages
 import HomePage from './pages/HomePage';
@@ -33,6 +35,22 @@ import SEO from './components/common/SEO';
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
   return isAuthenticated ? children : <Navigate to="/admin/login" replace />;
+};
+
+ReactGA.initialize("G-GZHXSX7MYJ");
+
+const AnalyticsTracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({
+      hitType: 'pageview',
+      page: `${location.pathname}${location.search}${location.hash}`,
+      title: document.title,
+    });
+  }, [location]);
+
+  return null;
 };
 
 const PublicLayout = ({ children }) => (
@@ -99,6 +117,7 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        <AnalyticsTracker />
         <ScrollToTop />
         <AppRoutes />
         <Toaster
