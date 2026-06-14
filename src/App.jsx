@@ -72,8 +72,8 @@ const homeJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'EducationalOrganization',
   name: 'Royal Coaching Centre',
-  url: typeof window !== 'undefined' ? window.location.origin : 'https://www.royalcoachingcenter.com',
-  logo: typeof window !== 'undefined' ? `${window.location.origin}/logo.png` : 'https://www.royalcoachingcenter.com/logo.png',
+  url: typeof window !== 'undefined' ? window.location.origin : 'https://www.royalcoachingcentre.com',
+  logo: typeof window !== 'undefined' ? `${window.location.origin}/logo.png` : 'https://www.royalcoachingcentre.com/logo.png',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Vellore',
